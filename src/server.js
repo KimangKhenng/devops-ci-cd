@@ -1,11 +1,14 @@
 import express from 'express';
 import 'dotenv/config';
+import connectDB from './config/database.js';
 
+connectDB()
 const app = express();
 app.use(express.json());
 
 // Health check endpoint
 app.get('/health', (req, res) => {
+    console.log("Hello")
     res.status(200).json({
         status: 'healthy',
         timestamp: new Date().toISOString(),
